@@ -11,22 +11,24 @@ namespace EquipOps.DAL.Repository
     {
         public async Task<UserRoleResponseViewModel> UserRoleCreateAsync(UserRoleRequest request)
         {
-            var userIdClaim = _contextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var updated_by = string.IsNullOrWhiteSpace(userIdClaim) ? (Guid?)null : Guid.Parse(userIdClaim);
+            var userIdClaim = _contextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Guid? updatedBy = string.IsNullOrWhiteSpace(userIdClaim) ? (Guid?)null : Guid.Parse(userIdClaim);
 
             var param = new Dictionary<string, DbParam>
-            {
-                { "_return_id", new DbParam { Value = null, DbType = DbType.Guid, Direction = ParameterDirection.InputOutput } },
-                { "_return_createddate", new DbParam { Value = null, DbType = DbType.DateTime, Direction = ParameterDirection.InputOutput } },
-                { "_return_updateddate", new DbParam { Value = null, DbType = DbType.DateTime, Direction = ParameterDirection.InputOutput } },
-                { "_id", new DbParam { Value = request.id, DbType = DbType.Guid } },
-                { "_name", new DbParam { Value = request.name, DbType = DbType.String } },
-                { "_created_by", new DbParam { Value = updated_by, DbType = DbType.Guid } },
-                { "_is_delete", new DbParam { Value = false, DbType = DbType.Boolean } },
-                { "_is_active", new DbParam { Value = true, DbType = DbType.Boolean } }
-            };
+{
+    { "_id", new DbParam { Value = request.id, DbType = DbType.Guid } },
+    { "_created_by", new DbParam { Value = updatedBy, DbType = DbType.Guid } },
+    { "_name", new DbParam { Value = request.name, DbType = DbType.String } },
+    { "_is_delete", new DbParam { Value = false, DbType = DbType.Boolean } },
+    { "_is_active", new DbParam { Value = true, DbType = DbType.Boolean } },
+    // Output only
+    { "_return_id", new DbParam { DbType = DbType.Guid, Direction = ParameterDirection.Output } },
+    { "_return_createddate", new DbParam { DbType = DbType.DateTime, Direction = ParameterDirection.Output } },
+    { "_return_updateddate", new DbParam { DbType = DbType.DateTime, Direction = ParameterDirection.Output } }
+};
 
-            dynamic result = await _pghelper.CreateUpdateAsync("master.sp_user_role_create_update", param);
+
+            dynamic result = await _pghelper.CreateUpdateAsync("master.sp_role_create_update", param);
 
             var data = new UserRoleResponseViewModel
             {
@@ -34,12 +36,14 @@ namespace EquipOps.DAL.Repository
                 name = request.name,
                 is_delete = false,
                 is_active = true,
-                created_by = updated_by,
+                created_by = updatedBy,
                 created_date = result._return_createddate,
                 updated_date = result._return_updateddate,
             };
+
             return data;
         }
+
         public async Task<UserRoleResponse> UserRoleListAsync(string? search, bool? IsActive, int length, int page, string orderColumn, string orderDirection)
         {
             var Params = new Dictionary<string, DbParam>

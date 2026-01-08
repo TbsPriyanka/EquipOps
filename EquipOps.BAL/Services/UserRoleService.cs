@@ -9,34 +9,43 @@ namespace EquipOps.BAL.Services
     {
         public async Task<ApiResponse<UserRoleResponseViewModel>> UserRoleCreateAsync(UserRoleRequest model)
         {
+            if (model == null)
+            {
+                return new ApiResponse<UserRoleResponseViewModel>
+                {
+                    StatusCode = (int)ApiStatusCode.BAD_REQUEST,
+                    Success = false,
+                    Message = "Request model is null.",
+                    Data = null
+                };
+            }
+
             var data = await _userRoleRepository.UserRoleCreateAsync(model);
 
-            string Message = "";
-            bool Status = false;
-            int Code = 0;
-            if (data.id == null)
+            if (data == null || data.id == Guid.Empty)
             {
-                Code = (int)ApiStatusCode.BAD_REQUEST;
-                Message = "Invalid data";
+                return new ApiResponse<UserRoleResponseViewModel>
+                {
+                    StatusCode = (int)ApiStatusCode.BAD_REQUEST,
+                    Success = false,
+                    Message = "Invalid data",
+                    Data = null
+                };
             }
-            else
-            {
-                Code = (int)ApiStatusCode.OK;
-                Status = true;
-                if (model.id == null)
-                    Message = "User Role Is Inserted Successfully.";
-                else
-                    Message = "User Role Is Updated Successfully.";
-            }
+
+            string message = model.id == null
+                ? "User Role has been inserted successfully."
+                : "User Role has been updated successfully.";
 
             return new ApiResponse<UserRoleResponseViewModel>
             {
-                StatusCode = Code,
-                Success = Status,
-                Message = Message,
+                StatusCode = (int)ApiStatusCode.OK,
+                Success = true,
+                Message = message,
                 Data = data
             };
         }
+
         public async Task<ApiResponse<UserRoleResponse>> UserRoleListAsync(string? search,bool? Is_Active,int length,int page,string orderColumn,string orderDirection)
         {
             var data = await _userRoleRepository
