@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EquipOps.BAL/EquipOps.BAL.csproj" />
+  <Project Path="EquipOps.Common/EquipOps.Common.csproj" />
+  <Project Path="EquipOps.DAL/EquipOps.DAL.csproj" />
+  <Project Path="EquipOps.Model/EquipOps.Model.csproj" />
+  <Project Path="EquipOps/EquipOps.API.csproj" />
+</Solution>
