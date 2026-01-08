@@ -1,4 +1,4 @@
-﻿using EquipOps.Common.DbConnection;
+﻿using EquipOps.Common.Helper;
 
 namespace EquipOps.API
 {

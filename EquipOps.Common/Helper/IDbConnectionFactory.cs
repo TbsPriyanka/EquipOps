@@ -2,8 +2,13 @@
 using Npgsql;
 using System.Data;
 
-namespace EquipOps.Common.DbConnection
+namespace EquipOps.Common.Helper
 {
+    public interface IDbConnectionFactory
+    {
+        IDbConnection CreateConnection();
+    }
+
     public class DbConnectionFactory : IDbConnectionFactory
     {
         private readonly IConfiguration _config;

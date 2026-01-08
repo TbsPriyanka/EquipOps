@@ -1,4 +1,4 @@
-﻿namespace OrganizationService.Api.Helpers.ResponseHelpers.Enums
+﻿namespace EquipOps.Common.Helper
 {
     public enum ResponseStatus
     {

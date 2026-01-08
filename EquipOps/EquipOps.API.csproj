@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\EquipOps.BAL\EquipOps.BAL.csproj" />
     <ProjectReference Include="..\EquipOps.Common\EquipOps.Common.csproj" />
   </ItemGroup>
 

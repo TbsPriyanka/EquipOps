@@ -1,6 +1,6 @@
-﻿namespace OrganizationService.Api.Helpers.ResponseHelpers.Enums
+﻿namespace EquipOps.Common.Helper
 {
-    public enum StatusCodeEnum
+    public enum ApiStatusCode
     {
         OK = 200,
         CREATED = 201,

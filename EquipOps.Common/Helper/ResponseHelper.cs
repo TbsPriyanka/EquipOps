@@ -1,7 +1,4 @@
-﻿using OrganizationService.Api.Helpers.ResponseHelpers.Enums;
-using OrganizationService.Api.Helpers.ResponseHelpers.Models;
-
-namespace OrganizationService.Api.Helpers.ResponseHelpers.Handlers
+﻿namespace EquipOps.Common.Helper
 {
     public static class ResponseHelper<T>
     {
@@ -19,7 +16,7 @@ namespace OrganizationService.Api.Helpers.ResponseHelpers.Handlers
                     List<string>? errors = null,
                     Exception? exception = null,
                     bool isWarning = false,
-                    StatusCodeEnum statusCode = StatusCodeEnum.BAD_REQUEST
+                    ApiStatusCode statusCode = ApiStatusCode.BAD_REQUEST
                 )
         {
             var exceptionResponse = exception != null
@@ -68,7 +65,7 @@ namespace OrganizationService.Api.Helpers.ResponseHelpers.Handlers
             if (ExceptionDetails != null)
                 result["exception"] = new
                 {
-                    StatusCode = ExceptionDetails.StatusCode,
+                    StatusCode = ExceptionDetails.StatusCodeRequest,
                     Message = ExceptionDetails.ExceptionMessage,
                     StackTrace = ExceptionDetails.ExceptionStackTrace,
                     IsWarning = ExceptionDetails.IsWarning
