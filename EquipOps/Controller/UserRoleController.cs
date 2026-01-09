@@ -7,7 +7,9 @@ namespace EquipOps.API.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
+
     public class UserRoleController(IUserRoleService _userRoleService) : ControllerBase
     {
         [HttpPost("userRoleCreate")]

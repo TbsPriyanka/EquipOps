@@ -58,7 +58,7 @@ namespace EquipOps.DAL.Repository
                 { "ref",              new DbParam { Value = "mycursor", DbType = DbType.String, Direction = ParameterDirection.InputOutput } }
             };
 
-            dynamic response = await _pghelper.ListAsync("master.sp_get_user_role_list", Params);
+            dynamic response = await _pghelper.ListAsync("master.sp_get_role_list", Params);
 
             UserRoleResponse list = new UserRoleResponse();
             list.TotalNumbers = response.o_total_records;
@@ -106,7 +106,7 @@ namespace EquipOps.DAL.Repository
                 { "ref", new DbParam { Value = "mycursor", DbType = DbType.String, Direction = ParameterDirection.InputOutput } }
             };
 
-            dynamic response = await _pghelper.ListAsync("master.sp_get_user_role_byid", Params);
+            dynamic response = await _pghelper.ListAsync("master.sp_get_role_byid", Params);
 
             UserRoleResponseViewModel userRoleResponseViewModel = new UserRoleResponseViewModel();
             dynamic obj = response.@ref[0];

@@ -28,6 +28,10 @@ namespace EquipOps.API
             // Email
             services.AddScoped<IEmailService, EmailService>();
 
+            // Vendor
+            services.AddScoped<IVendorRepository, VendorRepository>();
+            services.AddScoped<IVendorService, VendorService>();
+
             return services;
         }
     }
