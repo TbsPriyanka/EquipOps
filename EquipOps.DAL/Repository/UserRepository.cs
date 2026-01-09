@@ -30,14 +30,14 @@ namespace EquipOps.DAL.Repository
             }
 
             var parameters = new DynamicParameters();
-            parameters.Add("p_id", request.Id);
+            parameters.Add("p_user_id", request.Id);
             parameters.Add("p_first_name", request.FirstName);
             parameters.Add("p_last_name", request.LastName);
             parameters.Add("p_email", request.Email);
             parameters.Add("p_phone_number", request.PhoneNumber);
             parameters.Add("p_organization_id", request.OrganizationId);
             parameters.Add("p_role_id", request.RoleId);
-            parameters.Add("p_password", hashedPassword); 
+            parameters.Add("p_password", hashedPassword);
             parameters.Add("p_updated_by", updatedBy);
             parameters.Add("o_user_id", dbType: DbType.Guid, direction: ParameterDirection.Output);
 

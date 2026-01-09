@@ -32,7 +32,11 @@ namespace EquipOps.API
 			services.AddScoped<IEquipmentService, EquipmentService>();
 
 
-			return services;
+            // Vendor
+            services.AddScoped<IVendorRepository, VendorRepository>();
+            services.AddScoped<IVendorService, VendorService>();
+
+            return services;
         }
     }
 }

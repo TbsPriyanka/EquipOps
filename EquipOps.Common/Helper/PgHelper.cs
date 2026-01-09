@@ -15,20 +15,12 @@ namespace EquipOps.Common.Helper
 
             foreach (var p in Params)
             {
-                if (p.Key.Contains("return"))  
-                    parameters.Add(
-                        p.Key,
-                        value: null,
-                        dbType: p.Value.DbType,  
-                        direction: ParameterDirection.InputOutput
-                    );
-                else
-                    parameters.Add(
-                        p.Key,
-                        value: p.Value.Value ?? (p.Value.Direction == ParameterDirection.InputOutput ? DBNull.Value : null),
-                        dbType: p.Value.DbType,
-                        direction: ParameterDirection.Input
-                    );
+                parameters.Add(
+                    p.Key,
+                    value: p.Value.Value ?? DBNull.Value,
+                    dbType: p.Value.DbType,
+                    direction: p.Value.Direction
+                );
             }
 
             string query = BuildCallQuery(procedureName, Params);
@@ -184,7 +176,7 @@ namespace EquipOps.Common.Helper
     public class DbParam
     {
         public object? Value { get; set; }
-        public DbType DbType { get; set; } = DbType.String;
+        public DbType DbType { get; set; }
         public ParameterDirection Direction { get; set; } = ParameterDirection.Input;
     }
 }
