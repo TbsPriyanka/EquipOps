@@ -116,7 +116,7 @@ namespace EquipOps.Common.Helper
                 DbType.String => NpgsqlTypes.NpgsqlDbType.Text,
                 DbType.Boolean => NpgsqlTypes.NpgsqlDbType.Boolean,
                 DbType.Int32 => NpgsqlTypes.NpgsqlDbType.Integer,
-                DbType.DateTime => NpgsqlTypes.NpgsqlDbType.TimestampTz,
+                DbType.DateTime => NpgsqlTypes.NpgsqlDbType.Timestamp,
                 _ => NpgsqlTypes.NpgsqlDbType.Text 
             };
         }

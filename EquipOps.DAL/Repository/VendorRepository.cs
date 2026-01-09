@@ -11,15 +11,15 @@ namespace EquipOps.DAL.Repository
         {
             var param = new Dictionary<string, DbParam>
            {
+               { "p_return_vendor_id", new DbParam { DbType = DbType.Int32, Direction = ParameterDirection.InputOutput } },
+               { "p_return_updated_at", new DbParam { DbType = DbType.DateTime, Direction = ParameterDirection.InputOutput } },
                { "p_vendor_id", new DbParam { Value = request.vendor_id == 0 ? null : request.vendor_id, DbType = DbType.Int32 } },
                { "p_organization_id", new DbParam { Value = request.organization_id, DbType = DbType.Int32 } },
                { "p_name", new DbParam { Value = request.name, DbType = DbType.String } },
                { "p_contact_name", new DbParam { Value = request.contact_name, DbType = DbType.String } },
                { "p_email", new DbParam { Value = request.email, DbType = DbType.String } },
                { "p_phone", new DbParam { Value = request.phone, DbType = DbType.String } },
-               { "p_service_type", new DbParam { Value = request.service_type, DbType = DbType.String } },
-               { "p_return_vendor_id", new DbParam { DbType = DbType.Int32, Direction = ParameterDirection.InputOutput } },
-               { "p_return_updated_at", new DbParam { DbType = DbType.DateTime, Direction = ParameterDirection.InputOutput } }
+               { "p_service_type", new DbParam { Value = request.service_type, DbType = DbType.String } }
            };
 
             var result = await _pghelper.CreateUpdateAsync("master.sp_vendor_create_update", param);
