@@ -27,8 +27,12 @@ namespace EquipOps.API
 
             // Email
             services.AddScoped<IEmailService, EmailService>();
+			// Equipment
+			services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+			services.AddScoped<IEquipmentService, EquipmentService>();
 
-            return services;
+
+			return services;
         }
     }
 }
