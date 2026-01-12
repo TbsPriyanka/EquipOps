@@ -44,6 +44,10 @@ namespace EquipOps.API
             services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             services.AddScoped<IOrganizationService, OrganizationService>();
 
+            // EquipmentFailure
+            services.AddScoped<IEquipmentFailureRepository, EquipmentFailureRepository>();
+            services.AddScoped<IEquipmentFailureService, EquipmentFailureService>();
+
             return services;
         }
     }

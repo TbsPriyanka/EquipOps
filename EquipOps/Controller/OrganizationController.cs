@@ -31,7 +31,7 @@ namespace EquipOps.API.Controller
             return Ok(result);
         }
 
-        [HttpDelete("organizationDelete")]
+        [HttpPost("organizationDelete")]
         public async Task<IActionResult> OrganizationDelete([FromBody] OrganizationDeleteRequestViewModel request)
         {
             var result = await _organizationService.OrganizationDeleteAsync(request);

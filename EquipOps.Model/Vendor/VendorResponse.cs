@@ -12,6 +12,7 @@ namespace EquipOps.Model.Vendor
         public int? vendor_id { get; set; }
         public int? organization_id { get; set; }
         public string name { get; set; } = null!;
+        public string? organization_name { get; set; }
         public string? contact_name { get; set; }
         public string? email { get; set; }
         public string? phone { get; set; }

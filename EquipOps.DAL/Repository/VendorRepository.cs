@@ -62,6 +62,7 @@ namespace EquipOps.DAL.Repository
                     vendor_id = row.vendor_id,
                     organization_id = row.organization_id,
                     name = row.name,
+                    organization_name = row.organization_name,
                     contact_name = row.contact_name,
                     email = row.email,
                     phone = row.phone,

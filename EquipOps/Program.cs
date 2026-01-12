@@ -1,6 +1,5 @@
 using EquipOps.API;
 using EquipOps.Common.Configuration;
-using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +22,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:5174"
+           "http://localhost:5174"
         )
         .AllowAnyHeader()
         .AllowAnyMethod()
