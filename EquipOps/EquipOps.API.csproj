@@ -11,10 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< Updated upstream
     <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> Stashed changes
     <ProjectReference Include="..\EquipOps.Common\EquipOps.Common.csproj" />
   </ItemGroup>
 
