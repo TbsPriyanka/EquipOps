@@ -40,6 +40,10 @@ namespace EquipOps.API
             services.AddScoped<IEquipmentCategoryRepository, EquipmentCategoryRepository>();
             services.AddScoped<IEquipmentCategoryService, EquipmentCategoryService>();
 
+            // Organization
+            services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+            services.AddScoped<IOrganizationService, OrganizationService>();
+
             return services;
         }
     }

@@ -39,7 +39,7 @@ namespace EquipOps.API.Controller
             return Ok(result);
         }
 
-        [HttpDelete("vendorDelete")]
+        [HttpPost("vendorDelete")]
         public async Task<IActionResult> VendorDelete([FromBody] VendorDeleteRequestViewModel request)
         {
             var result = await _vendorService.VendorDeleteAsync(request);
