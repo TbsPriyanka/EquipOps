@@ -56,6 +56,7 @@ namespace EquipOps.DAL.Repository
                     category_id = row.category_id,
                     organization_id = row.organization_id,
                     category_name = row.category_name,
+                    organization_name = row.organization_name,
                     description = row.description,
                     created_date = row.created_at,
                     updated_date = row.updated_at
