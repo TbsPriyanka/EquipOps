@@ -63,14 +63,17 @@ namespace EquipOps.DAL.Repository
                 {
                     failure_id = row.failure_id,
                     organization_id = row.organization_id,
+                    organization_name = row.organization_name,
                     equipment_id = row.equipment_id,
                     equipment_name = row.equipment_name,
                     subpart_id = row.subpart_id,
+                    subpart_name = row.subpart_name,
                     failure_date = row.failure_date,
                     failure_type = row.failure_type,
                     description = row.description,
                     downtime_minutes = row.downtime_minutes,
-                    created_date = row.created_at
+                    created_date = row.created_date,
+                    updated_date = row.updated_date
                 });
             }
 

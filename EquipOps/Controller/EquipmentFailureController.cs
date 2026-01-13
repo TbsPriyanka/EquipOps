@@ -12,7 +12,7 @@ namespace EquipOps.API.Controller
 
     public class EquipmentFailureController(IEquipmentFailureService _EquipmentFailureService) : ControllerBase
     {
-        [HttpPost("EquipmentFailureCreate")]
+        [HttpPost("EquipmentFailureCreateUpdate")]
         public async Task<IActionResult> EquipmentFailureCreate([FromBody] EquipmentFailureRequest request)
         {
             var result = await _EquipmentFailureService.EquipmentFailureCreateAsync(request);
@@ -33,9 +33,9 @@ namespace EquipOps.API.Controller
         }
 
         [HttpGet("EquipmentFailureById")]
-        public async Task<IActionResult> GetEquipmentFailureById(int? EquipmentFailure_id)
+        public async Task<IActionResult> GetEquipmentFailureById(int? failure_id)
         {
-            var result = await _EquipmentFailureService.EquipmentFailureByIdAsync(EquipmentFailure_id);
+            var result = await _EquipmentFailureService.EquipmentFailureByIdAsync(failure_id);
             return Ok(result);
         }
 
